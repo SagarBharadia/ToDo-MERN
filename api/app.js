@@ -4,7 +4,7 @@ const path = require("path")
 const cors = require("cors")
 require("dotenv").config()
 
-const todoRoute = require("./routes/todo")
+const todoRoutes = require("./routes/todo")
 
 const app = express()
 
@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use("/static", express.static(path.join(`${__dirname}/public`)))
 
-app.use("/", todoRoute)
+app.use("/todos", todoRoutes)
 
 const port = process.env.PORT || 8080
 
