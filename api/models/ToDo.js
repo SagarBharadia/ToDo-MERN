@@ -7,7 +7,7 @@ const ToDoSchema = mongoose.Schema({
   },
   done: {
     type: Boolean,
-    required: true,
+    required: false,
   },
   created_at: {
     type: Date,

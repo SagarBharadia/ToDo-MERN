@@ -7,7 +7,7 @@ const router = express.Router()
 router.get("/", todosController.getIndex)
 
 // Create a todo
-// router.post("/create")
+router.post("/create", todosController.createTodo)
 
 // Get a single todo
 // router.post("/:id")
