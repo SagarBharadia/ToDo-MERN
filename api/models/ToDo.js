@@ -13,6 +13,10 @@ const ToDoSchema = mongoose.Schema({
     type: Date,
     required: true,
   },
+  updated_at: {
+    type: Date,
+    required: true,
+  },
 })
 
 module.exports = mongoose.model("todos", ToDoSchema)

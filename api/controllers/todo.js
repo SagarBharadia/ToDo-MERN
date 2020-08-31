@@ -16,7 +16,11 @@ exports.createTodo = async (req, res) => {
   const { task } = req.body
 
   try {
-    const todo = new ToDo({ task: task, created_at: new Date() })
+    const todo = new ToDo({
+      task: task,
+      created_at: new Date(),
+      updated_at: new Date(),
+    })
     todo.save()
     res.status(200).json(todo)
   } catch (error) {
@@ -39,5 +43,32 @@ exports.getTodo = async (req, res) => {
   } catch (error) {
     console.log(error)
     res.status(500).json({ error: "Could not get todo." })
+  }
+}
+
+exports.updateTodo = async (req, res) => {
+  const { id } = req.params
+
+  const { task, done } = req.body
+
+  try {
+    ToDo.findById(id)
+      .then((todo) => {
+        todo.task = task
+        todo.done = done === null ? todo.done : done
+        todo.updated_at = new Date()
+
+        return todo.save()
+      })
+      .then(() => {
+        res.status(201).end()
+      })
+      .catch((err) => {
+        // Need to figure out different options and handle this
+        console.log(err)
+      })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ error: "Could not update todo." })
   }
 }

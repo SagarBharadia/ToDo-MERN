@@ -13,7 +13,7 @@ router.post("/create", todosController.createTodo)
 router.get("/:id", todosController.getTodo)
 
 // Update a todo
-// router.post("/:id/update")
+router.post("/:id/update", todosController.updateTodo)
 
 // Delete a todo
 // router.post("/:id/delete")
