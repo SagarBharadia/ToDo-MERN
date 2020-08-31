@@ -10,7 +10,7 @@ router.get("/", todosController.getIndex)
 router.post("/create", todosController.createTodo)
 
 // Get a single todo
-// router.post("/:id")
+router.get("/:id", todosController.getTodo)
 
 // Update a todo
 // router.post("/:id/update")
