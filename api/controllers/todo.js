@@ -1,4 +1,5 @@
 const ToDo = require("../models/ToDo")
+const { genErrorBag } = require("../util/ErrorHandling")
 
 // Get all todos
 exports.getIndex = async (req, res) => {
@@ -21,8 +22,15 @@ exports.createTodo = async (req, res) => {
       created_at: new Date(),
       updated_at: new Date(),
     })
-    todo.save()
-    res.status(200).json(todo)
+    todo.save((err) => {
+      if (err) {
+        const errorBag = genErrorBag(err.errors)
+
+        res.status(422).json(errorBag)
+      } else {
+        res.status(200).json(todo)
+      }
+    })
   } catch (error) {
     res.status(500).json({ error: "Could not create todo." })
     console.log(error)
@@ -60,10 +68,15 @@ exports.updateTodo = async (req, res) => {
         todo.done = done === null ? todo.done : done
         todo.updated_at = new Date()
 
-        return todo.save()
-      })
-      .then(() => {
-        res.status(201).end()
+        return todo.save((err) => {
+          if (err) {
+            const errorBag = genErrorBag(err.errors)
+
+            res.status(422).json(errorBag)
+          } else {
+            res.status(200).json(todo)
+          }
+        })
       })
       .catch((err) => {
         // Need to figure out different options and handle this
