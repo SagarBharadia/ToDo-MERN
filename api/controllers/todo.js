@@ -29,6 +29,7 @@ exports.createTodo = async (req, res) => {
   }
 }
 
+// Get todo
 exports.getTodo = async (req, res) => {
   const { id } = req.params
 
@@ -46,6 +47,7 @@ exports.getTodo = async (req, res) => {
   }
 }
 
+// Update todo
 exports.updateTodo = async (req, res) => {
   const { id } = req.params
 
@@ -73,6 +75,7 @@ exports.updateTodo = async (req, res) => {
   }
 }
 
+// Delete todo
 exports.deleteTodo = async (req, res) => {
   const { id } = req.body
 
