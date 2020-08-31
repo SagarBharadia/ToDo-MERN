@@ -3,7 +3,7 @@ const ToDo = require("../models/ToDo")
 // Get all todos
 exports.getIndex = async (req, res) => {
   try {
-    const todos = await ToDo.find((data) => data)
+    const todos = await ToDo.find()
     res.status(200).json(todos)
   } catch (error) {
     res.status(500).json({ error: "Could not fetch all todos." })
@@ -33,7 +33,7 @@ exports.getTodo = async (req, res) => {
   const { id } = req.params
 
   try {
-    const todo = await ToDo.findById(id, (todo) => todo)
+    const todo = await ToDo.findById(id)
 
     if (!todo) {
       res.status(404).json({ error: "Todo not found." })
@@ -70,5 +70,22 @@ exports.updateTodo = async (req, res) => {
   } catch (error) {
     console.log(error)
     res.status(500).json({ error: "Could not update todo." })
+  }
+}
+
+exports.deleteTodo = async (req, res) => {
+  const { id } = req.body
+
+  try {
+    const todo = await ToDo.findByIdAndRemove(id)
+
+    if (!todo) {
+      res.status(404).json({ error: "Todo not found." })
+    } else {
+      res.status(204).end()
+    }
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ error: "Could not delete todo." })
   }
 }
