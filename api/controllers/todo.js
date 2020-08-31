@@ -62,26 +62,26 @@ exports.updateTodo = async (req, res) => {
   const { task, done } = req.body
 
   try {
-    ToDo.findById(id)
-      .then((todo) => {
-        todo.task = task
-        todo.done = done === null ? todo.done : done
-        todo.updated_at = new Date()
+    ToDo.findById(id).then((todo) => {
+      if (!todo) {
+        res.status(404).end()
+        return
+      }
 
-        return todo.save((err) => {
-          if (err) {
-            const errorBag = genErrorBag(err.errors)
+      todo.task = task
+      todo.done = done === null ? todo.done : done
+      todo.updated_at = new Date()
 
-            res.status(422).json(errorBag)
-          } else {
-            res.status(200).json(todo)
-          }
-        })
+      return todo.save((err) => {
+        if (err) {
+          const errorBag = genErrorBag(err.errors)
+
+          res.status(422).json(errorBag)
+        } else {
+          res.status(200).json(todo)
+        }
       })
-      .catch((err) => {
-        // Need to figure out different options and handle this
-        console.log(err)
-      })
+    })
   } catch (error) {
     console.log(error)
     res.status(500).json({ error: "Could not update todo." })
