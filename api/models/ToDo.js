@@ -3,12 +3,9 @@ const mongoose = require("mongoose")
 const ToDoSchema = mongoose.Schema({
   task: {
     type: String,
-    required: true,
+    required: [true, "You need something todo! (Don't you?)"],
   },
-  done: {
-    type: Boolean,
-    required: false,
-  },
+  done: Boolean,
   created_at: {
     type: Date,
     required: true,
