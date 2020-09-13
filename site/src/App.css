@@ -7,3 +7,16 @@ body {
   font-family: "Noto Sans JP", sans-serif;
   width: 100vw;
 }
+
+.App {
+  text-align: center;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.complete {
+  text-decoration: line-through;
+}

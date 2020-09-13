@@ -1,8 +1,22 @@
 import React, { Component } from "react"
+import ToDoRow from "./ToDoRow"
 
 class ToDosTable extends Component {
   state = {
     todos: [],
+  }
+
+  updateToDos = (updatedToDo) => {
+    const updatedToDos = this.state.todos.map((todo) => {
+      if (todo._id === updatedToDo._id) {
+        return updatedToDo
+      } else {
+        return todo
+      }
+    })
+    this.setState({
+      todos: updatedToDos,
+    })
   }
 
   componentDidMount() {
@@ -16,7 +30,22 @@ class ToDosTable extends Component {
   }
 
   render() {
-    return <div></div>
+    const { todos } = { ...this.state }
+    return (
+      <table>
+        <tbody>
+          {todos.map((todo) => {
+            return (
+              <ToDoRow
+                key={todo._id}
+                todo={todo}
+                updateToDos={this.updateToDos}
+              />
+            )
+          })}
+        </tbody>
+      </table>
+    )
   }
 }
 
