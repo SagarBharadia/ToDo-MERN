@@ -5,7 +5,10 @@ const ToDoSchema = mongoose.Schema({
     type: String,
     required: [true, "You need something todo! (Don't you?)"],
   },
-  done: Boolean,
+  done: {
+    type: Boolean,
+    required: true,
+  },
   created_at: {
     type: Date,
     required: true,
