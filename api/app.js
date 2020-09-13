@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const path = require("path")
 const cors = require("cors")
+const bodyParser = require("body-parser")
 require("dotenv").config()
 
 const todoRoutes = require("./routes/todo")
@@ -11,6 +12,7 @@ const app = express()
 app.use(cors())
 
 app.use(express.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.use("/static", express.static(path.join(`${__dirname}/public`)))
 

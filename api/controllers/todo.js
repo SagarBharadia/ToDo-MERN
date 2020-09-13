@@ -19,6 +19,7 @@ exports.createTodo = async (req, res) => {
   try {
     const todo = new ToDo({
       task: task,
+      done: false,
       created_at: new Date(),
       updated_at: new Date(),
     })
@@ -59,7 +60,7 @@ exports.getTodo = async (req, res) => {
 exports.updateTodo = async (req, res) => {
   const { id } = req.params
 
-  const { task, done } = req.body
+  const { task, done } = { ...req.body }
 
   try {
     ToDo.findById(id).then((todo) => {
@@ -68,9 +69,13 @@ exports.updateTodo = async (req, res) => {
         return
       }
 
-      todo.task = task
-      todo.done = done === null ? todo.done : done
+      console.log(todo)
+
+      todo.task = task === undefined ? todo.task : task
+      todo.done = done === undefined ? todo.done : done
       todo.updated_at = new Date()
+
+      console.log(todo)
 
       return todo.save((err) => {
         if (err) {
