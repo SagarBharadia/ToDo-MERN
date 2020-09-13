@@ -21,7 +21,7 @@ class ToDoRow extends Component {
     return (
       <tr
         onClick={this.toggleDone.bind(this, todo._id, !todo.done)}
-        className={todo.done ? "complete" : ""}
+        className={`todo-row ${todo.done ? "complete" : ""}`}
       >
         <td>{todo.task}</td>
       </tr>

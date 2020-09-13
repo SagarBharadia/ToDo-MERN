@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 
-html,
+html {
+  padding: 20px;
+}
+
 body {
   margin: 0;
-  padding: 0;
   font-family: "Noto Sans JP", sans-serif;
-  width: 100vw;
+  width: 100%;
 }
 
 .App {
@@ -14,9 +16,22 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   flex-wrap: nowrap;
 }
 
 .complete {
   text-decoration: line-through;
+}
+
+table {
+  width: 100%;
+}
+
+.todo-row {
+  cursor: pointer;
+}
+
+.todo-row td {
+  padding: 5px;
 }
