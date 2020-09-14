@@ -1,14 +1,19 @@
 import React, { Component } from "react"
+import { Switch, BrowserRouter as Router, Route } from "react-router-dom"
+
+import Home from "./pages/home/Home"
+
 import "./App.css"
-import "./Components/ToDosTable"
-import ToDosTable from "./Components/ToDosTable"
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>What have I got ToDo today?</h1>
-        <ToDosTable />
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </Router>
       </div>
     )
   }

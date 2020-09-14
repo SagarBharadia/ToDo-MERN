@@ -1,31 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 
-html {
-  padding: 20px;
+:root {
+  --primary-dark: #2d142c;
+  --secondary-dark: #510a32;
+  --middle: #801336;
+  --primary-light: #c72c41;
+  --secondary-light: #ee4540;
 }
 
 body {
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
-  width: 100%;
+  width: calc(100% - 20px);
+  padding: 10px;
 }
 
 .App {
-  text-align: center;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
 }
 
 .complete {
   text-decoration: line-through;
 }
 
-table {
+.subtitle-with-border span {
+  border-bottom: solid 4px var(--middle);
+  color: #444;
+  font-weight: 400;
+}
+
+#todo-table {
   width: 100%;
+  text-align: left;
 }
 
 .todo-row {
@@ -34,4 +40,5 @@ table {
 
 .todo-row td {
   padding: 5px;
+  border-bottom: 1px solid #fff;
 }

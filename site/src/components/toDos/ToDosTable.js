@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import ToDoRow from "./ToDoRow"
+import ToDoRow from "./partials/ToDoRow"
 
 class ToDosTable extends Component {
   state = {
@@ -32,7 +32,7 @@ class ToDosTable extends Component {
   render() {
     const { todos } = { ...this.state }
     return (
-      <table>
+      <table id="todo-table">
         <tbody>
           {todos.map((todo) => {
             return (
