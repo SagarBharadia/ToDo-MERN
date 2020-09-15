@@ -1,9 +1,21 @@
 import React, { Component } from "react"
 import Header from "components/header/Header"
+import ToDosList from "components/toDos/ToDosList"
 
 class Home extends Component {
   state = {
     title: "",
+    todos: [],
+  }
+
+  fetchTodos = () => {
+    fetch("http://localhost:3000/todos")
+      .then((todos) => todos.json())
+      .then((todos) => {
+        this.setState({
+          todos: todos,
+        })
+      })
   }
 
   generateDate = () => {
@@ -31,6 +43,8 @@ class Home extends Component {
         break
       case 6:
         dateToString += `Saturday ${today.getDate()},`
+        break
+      default:
         break
     }
 
@@ -71,6 +85,8 @@ class Home extends Component {
       case 11:
         dateToString += " Dec"
         break
+      default:
+        break
     }
 
     this.setState({
@@ -80,17 +96,19 @@ class Home extends Component {
 
   componentDidMount() {
     this.generateDate()
+    this.fetchTodos()
   }
 
   render() {
-    const { title } = { ...this.state }
+    const { title, todos } = { ...this.state }
     return (
       <div>
         <Header title={title} />
         <div className="content">
-          <h2 class="subtitle-with-border">
+          <h2 class="subtitle-with-border mt-0">
             <span>Tasks</span>
           </h2>
+          <ToDosList todos={todos} />
         </div>
       </div>
     )

@@ -1,17 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 
 :root {
-  --primary-dark: #2d142c;
-  --secondary-dark: #510a32;
-  --middle: #801336;
-  --primary-light: #c72c41;
-  --secondary-light: #ee4540;
+  --blue: #05386b;
+  --teal: #379683;
+  --flat-green: #5cdb95;
+  --faded-green: #8ee4af;
+  --grey: #edf5e1;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
-  width: calc(100% - 20px);
+  width: 100%;
   padding: 10px;
 }
 
@@ -19,26 +23,45 @@ body {
   overflow-y: auto;
 }
 
-.complete {
-  text-decoration: line-through;
+.content {
+  border-radius: 10px;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-25 {
+  width: 25%;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .subtitle-with-border span {
-  border-bottom: solid 4px var(--middle);
-  color: #444;
+  border-bottom: solid 4px var(--flat-green);
+  color: #212121;
   font-weight: 400;
 }
 
-#todo-table {
-  width: 100%;
-  text-align: left;
+.list.styled {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.todo-row {
-  cursor: pointer;
-}
-
-.todo-row td {
-  padding: 5px;
-  border-bottom: 1px solid #fff;
+.list.styled .list-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--grey);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
