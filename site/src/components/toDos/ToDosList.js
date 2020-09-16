@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import "./ToDoList.css"
 
 class ToDosTable extends Component {
   render() {
@@ -13,12 +14,12 @@ class ToDosTable extends Component {
     //   </table>
     // )
     return (
-      <ol class="list styled">
+      <ol class="todo-list styled">
         {todos.map((todo) => {
           return (
             <li className="list-item">
               <div className="w-75">{todo.task}</div>
-              <div className="w-25 text-center">&#xB7;&#xB7;&#xB7;</div>
+              <div className="w-25 text-right">&#xB7;&#xB7;&#xB7;</div>
             </li>
           )
         })}

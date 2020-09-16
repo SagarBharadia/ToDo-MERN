@@ -1,30 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 
 :root {
-  --blue: #05386b;
-  --teal: #379683;
-  --flat-green: #5cdb95;
-  --faded-green: #8ee4af;
-  --grey: #edf5e1;
+  --header-bg: #212121; /* 900 */
+
+  --app-bg: #fafafa; /* 100 */
+
+  --mobile-nav-bg: #fff;
+  --mobile-nav-btns: #757575; /* 600 */
+  --mobile-nav-btn-standout: #424242; /* 800 */
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  padding: 10px;
+}
+
 body {
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
   width: 100%;
-  padding: 10px;
 }
 
 .App {
   overflow-y: auto;
+  background-color: var(--app-bg);
+  min-height: calc(100vh - 20px);
 }
 
 .content {
   border-radius: 10px;
+  padding: 10px;
 }
 
 .mt-0 {
@@ -42,26 +50,11 @@ body {
 .text-center {
   text-align: center;
 }
+.text-right {
+  text-align: right;
+}
 
-.subtitle-with-border span {
-  border-bottom: solid 4px var(--flat-green);
+.subtitle {
   color: #212121;
   font-weight: 400;
-}
-
-.list.styled {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.list.styled .list-item {
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  background: var(--grey);
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
 }

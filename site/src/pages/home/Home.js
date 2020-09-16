@@ -105,9 +105,7 @@ class Home extends Component {
       <div>
         <Header title={title} />
         <div className="content">
-          <h2 class="subtitle-with-border mt-0">
-            <span>Tasks</span>
-          </h2>
+          <h2 class="subtitle mt-0">Tasks</h2>
           <ToDosList todos={todos} />
         </div>
       </div>
